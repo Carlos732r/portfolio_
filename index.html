@@ -294,7 +294,7 @@
 
         .slide-track {
             display: flex;
-            width: calc(200px * 12); /* 200px * Numero de slides originais (6) x 2 (duplicado) */
+            width: calc(200px * 12); /* 200px * Numero de slides */
             animation: scroll 20s linear infinite;
         }
 
@@ -326,7 +326,7 @@
 
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-200px * 6)); } /* Ajustar para metade dos itens */
+            100% { transform: translateX(calc(-200px * 6)); } 
         }
 
         /* --- PROJECTS --- */
@@ -528,7 +528,7 @@
             border-top: 1px solid #222;
         }
 
-        /* Responsividade */
+        /* --- RESPONSIVIDADE (MOBILE) --- */
         @media (max-width: 768px) {
             .nav-links {
                 position: absolute;
@@ -544,10 +544,26 @@
                 border-bottom: 1px solid var(--primary-color);
             }
             .nav-links.active { transform: translateY(0); }
+            
             .hamburger { display: block; }
+            
             .hero-content h1 { font-size: 2.5rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            .about-img { display: none; }
+            
+            /* Ajuste da Foto no Mobile */
+            .about-grid { 
+                grid-template-columns: 1fr; /* Coluna única */
+                text-align: center;
+            }
+            
+            .about-img { 
+                display: block; /* Garante que aparece */
+                margin: 0 auto 30px; /* Centraliza e dá espaço abaixo */
+                max-width: 80%; /* Não fica gigante na tela */
+            }
+            
+            .timeline {
+                text-align: left; /* Mantém a timeline alinhada à esquerda */
+            }
         }
     </style>
 </head>
@@ -666,7 +682,6 @@
             <div class="section-title" data-aos="fade-up" data-aos-duration="1200">Experiência <span>Profissional</span></div>
             <div style="max-width: 800px; margin: 0 auto;">
                 
-                <!-- Usei delays diferentes para criar efeito cascata ao descer -->
                 <div class="timeline-item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="0" style="background: var(--bg-card); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
                     <span class="date">2025 - Atual</span>
                     <h4 style="color: var(--text-main);">Freelancer em Desenvolvimento Web</h4>
@@ -724,7 +739,7 @@
                 <!-- 2. Landing Pages (Todos os outros sites) -->
                 <div class="project-card" data-category="landing" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1200">
                     <div class="project-img">
-                        <img src="fotogas.png" alt="Piauí Gás">
+                        <img src="piauigas.png" alt="Piauí Gás">
                     </div>
                     <div class="project-info">
                         <h4>Piauí Gás</h4>
@@ -766,7 +781,7 @@
 
                 <div class="project-card" data-category="landing" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1200">
                     <div class="project-img">
-                        <img src="viajarte.png" alt="Viajarte Turismo">
+                        <img src="viajarteturismo.png" alt="Viajarte Turismo">
                     </div>
                     <div class="project-info">
                         <h4>Viajarte Turismo</h4>
@@ -923,7 +938,6 @@
                 projectCards.forEach(card => {
                     if(filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                         card.style.display = 'block';
-                        // Re-trigger visual refresh if needed
                     } else {
                         card.style.display = 'none';
                     }
